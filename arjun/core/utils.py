@@ -57,7 +57,7 @@ def populate(array,word=None):
     converts a list of parameters into parameter and value pair
     returns dict
     """
-    if word and "{random}" in v:
+    if word and "{random}" in word:
         return {name: word.replace("{random}",'1' * (6 - len(str(random))) + str(random),1) for random, name in enumerate(array)}
     else:
         return {name: '1' * (6 - len(str(i))) + str(i) for i, name in enumerate(array)}

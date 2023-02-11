@@ -54,6 +54,7 @@ def error_handler(response, factors):
 			return connection_refused()
 		elif type(response) == str:
 			if '\'' in response:
+				print(response)
 				print('%s Encountered an error: %s' % (bad, response.split('\'')[1]))
 			return 'kill'
 	return 'ok'

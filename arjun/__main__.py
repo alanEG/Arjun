@@ -36,6 +36,7 @@ parser.add_argument('--passive', help='Collect parameter names from passive sour
 parser.add_argument('--stable', help='Prefer stability over speed.', dest='stable', action='store_true')
 parser.add_argument('--include', help='Include this data in every request.', dest='include', default={})
 parser.add_argument('--disable-redirects', help='disable redirects', dest='disable_redirects', action='store_true')
+parser.add_argument('-r',"--retry", help='Retry sending request', dest='retry',default=3)
 parser.add_argument('-ps','--put-string', help='add string {random}', dest='put_word',default="")
 parser.add_argument('-ms','--match-string', help='Match String from response', dest='match_string',default="")
 parser.add_argument('-mr','--match-regex',help='Match Regex', dest='match_regex',default="")
