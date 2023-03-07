@@ -1,10 +1,10 @@
 import json
 import requests
 
-import core.config as mem
-from core.utils import populate
+import arjun.core.config as mem
+from arjun.core.utils import populate
 
-from core.utils import create_query_string
+from arjun.core.utils import create_query_string
 
 def json_export(result):
     """

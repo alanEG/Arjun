@@ -8,15 +8,15 @@ import concurrent.futures
 from dicttoxml import dicttoxml
 from urllib.parse import urlparse
 
-from core.prompt import prompt
-from core.importer import importer
+from arjun.core.prompt import prompt
+from arjun.core.importer import importer
 
-from plugins.otx import otx
-from plugins.wayback import wayback
-from plugins.commoncrawl import commoncrawl
+from arjun.plugins.otx import otx
+from arjun.plugins.wayback import wayback
+from arjun.plugins.commoncrawl import commoncrawl
 
-import core.config as mem
-from core.colors import info
+import arjun.core.config as mem
+from arjun.core.colors import info
 
 
 def extract_headers(headers):

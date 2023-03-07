@@ -1,8 +1,8 @@
 import time
 
-import core.config as mem
+import arjun.core.config as mem
 
-from core.colors import bad
+from arjun.core.colors import bad
 
 def connection_refused():
 	"""

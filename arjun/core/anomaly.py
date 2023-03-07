@@ -1,10 +1,10 @@
 import re
 import requests
 
-import core.config as mem
+import arjun.core.config as mem
 
 from urllib.parse import urlparse
-from core.utils import diff_map, remove_tags
+from arjun.core.utils import diff_map, remove_tags
 
 
 def define(response_1, response_2, param, value, wordlist):
@@ -59,7 +59,7 @@ def compare(response, factors, params,match_string=None,match_regex=None):
     """
     these_headers = list(response.headers.keys())
     these_headers.sort()
-    
+
     match_string=match_string.split(",")
     if len(match_string) == 1 and match_string[0] == "":
         pass
