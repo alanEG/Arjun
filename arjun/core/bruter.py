@@ -1,8 +1,8 @@
-import arjun.core.config as mem
+import core.config as mem
 
-from arjun.core.anomaly import compare
-from arjun.core.requester import requester
-from arjun.core.error_handler import error_handler
+from core.anomaly import compare
+from core.requester import requester
+from core.error_handler import error_handler
 
 
 def bruter(request, factors, params, mode='bruteforce',match_string=None,match_regex=None):

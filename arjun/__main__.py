@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from arjun.core.colors import green, end, info, bad, good, run, res
+from core.colors import green, end, info, bad, good, run, res
 
 import argparse
 import re
 from urllib.parse import urlparse
-import arjun.core.config as mem
-from arjun.core.bruter import bruter
-from arjun.core.exporter import exporter
-from arjun.core.requester import requester
-from arjun.core.anomaly import define
-from arjun.core.utils import fetch_params, stable_request, random_str, slicer, confirm, populate, reader, nullify, prepare_requests, compatible_path
+import core.config as mem
+from core.bruter import bruter
+from core.exporter import exporter
+from core.requester import requester
+from core.anomaly import define
+from core.utils import fetch_params, stable_request, random_str, slicer, confirm, populate, reader, nullify, prepare_requests, compatible_path
 
-from arjun.plugins.heuristic import heuristic
+from plugins.heuristic import heuristic
 
 arjun_dir = compatible_path(mem.__file__.replace(compatible_path('/core/config.py'), ''))
 

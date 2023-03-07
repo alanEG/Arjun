@@ -1,10 +1,10 @@
 import re
 import requests
 
-import arjun.core.config as mem
+import core.config as mem
 
 from urllib.parse import urlparse
-from arjun.core.utils import diff_map, remove_tags
+from core.utils import diff_map, remove_tags
 
 
 def define(response_1, response_2, param, value, wordlist):
@@ -59,6 +59,7 @@ def compare(response, factors, params,match_string=None,match_regex=None):
     """
     these_headers = list(response.headers.keys())
     these_headers.sort()
+    
     match_string=match_string.split(",")
     if len(match_string) == 1 and match_string[0] == "":
         pass
@@ -66,34 +67,45 @@ def compare(response, factors, params,match_string=None,match_regex=None):
         for string_match in match_string:
             if string_match in response.text:
                 return ('match string',params)
+                
     if match_regex and re.match(rf"{match_regex}", response.text):
         return ('match regex',params)
+    
     if factors['same_code'] and response.status_code != factors['same_code']:
         return ('http code', params)
+    
     if factors['same_headers'] and these_headers != factors['same_headers']:
         return ('http headers', params)
+    
     if mem.var['disable_redirects']:
         if factors['same_redirect'] and urlparse(response.headers.get('Location', '')).path != factors['same_redirect']:
             return ('redirection', params)
+        
     elif factors['same_redirect'] and 'Location' in response.headers:
         if urlparse(response.headers.get['Location']).path != factors['same_redirect']:
             return ('redirection', params)
+        
     if factors['same_body'] and response.text != factors['same_body']:
         return ('body length', params)
+    
     if factors['lines_num'] and response.text.count('\n') != factors['lines_num']:
         return ('number of lines', params)
+    
     if factors['same_plaintext'] and remove_tags(response.text) != factors['same_plaintext']:
         return ('text length', params)
+    
     if factors['lines_diff']:
         for line in factors['lines_diff']:
             if line not in response.text:
                 return ('lines', params)
+            
     if type(factors['param_missing']) == list:
         for param in params.keys():
             if len(param) < 5:
                 continue
             if param not in factors['param_missing'] and re.search(r'[\'"\s]%s[\'"\s]' % param, response.text):
                 return ('param name reflection', params)
+            
     if factors['value_missing']:
         for value in params.values():
             if value in response.text and re.search(r'[\'"\s]%s[\'"\s]' % value, response.text):

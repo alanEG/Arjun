@@ -4,10 +4,10 @@ import random
 import requests
 import warnings
 
-import arjun.core.config as mem
+import core.config as mem
 
-from arjun.core.utils import dict_to_xml
-from arjun.core.colors import info
+from core.utils import dict_to_xml
+from core.colors import info
 
 warnings.filterwarnings('ignore') # Disable SSL related warnings
 
