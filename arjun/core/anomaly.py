@@ -82,7 +82,7 @@ def compare(response, factors, params,match_string=None,match_regex=None):
             return ('redirection', params)
         
     elif factors['same_redirect'] and 'Location' in response.headers:
-        if urlparse(response.headers.get['Location']).path != factors['same_redirect']:
+        if urlparse(response.headers.get('Location','')).path != factors['same_redirect']:
             return ('redirection', params)
         
     if factors['same_body'] and response.text != factors['same_body']:
